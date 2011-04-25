@@ -44,8 +44,15 @@ class String
 
   private
 
+  PROFANITY_TXT = "#{File.dirname(__FILE__)}/profane.txt" unless defined?(PROFANITY_TXT)
+  
   def profane_words
-    @@profane_words ||= fetch_profane_words
+    if @@profane_words.void?
+      @@profane_words = []
+      File.read(PROFANITY_TXT).split.each do |word|      
+        @@profane_words << word.strip.downcase
+      end
+    end    
     @@profane_words
   end
 
@@ -54,14 +61,5 @@ class String
     @@profanity_regexp
   end
 
-  def fetch_profane_words
-    words = []
-    File.open("#{RAILS_ROOT}/resources/profane.txt", "r") do |file|
-      while word = file.gets
-        words << word.strip.downcase
-      end
-    end
-    return words
-  end
 end
 

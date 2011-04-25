@@ -1,0 +1,12 @@
+require 'core_ext/array.rb'
+require 'core_ext/boolean.rb'
+require 'core_ext/class.rb'
+require 'core_ext/enumerable.rb'
+require 'core_ext/hash.rb'
+require 'core_ext/hash_with_indifferent_access.rb'
+require 'core_ext/nil.rb'
+require 'core_ext/numeric.rb'
+require 'core_ext/object.rb'
+require 'core_ext/string.rb'
+require 'core_ext/symbol.rb'
+

@@ -13,4 +13,10 @@ class Symbol
     end
   end
 
+  #include Comparable - Do I need this?
+  # treat symbols as strings for comparison purposes
+  def <=>(other)
+    self.to_s <=> other.to_s
+  end
+  
 end

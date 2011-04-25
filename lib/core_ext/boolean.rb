@@ -8,11 +8,17 @@ class Boolean
         @value = arg
       when Fixnum
         @value = (arg > 0)
-      when String, NilClass
-        @value = DataUtil.boolean_value?(arg)
+      when String
+        @value = (arg == 'true')
+      when NilClass
+        @value = false
       else
         raise ArgumentError, "Can't convert #{arg}:#{arg.class} to boolean"
     end
+  end
+
+  def bool?
+    true
   end
 
   def to_b
@@ -48,9 +54,11 @@ end
 class TrueClass
   def to_i; 1 end
   def to_b; true end
+  def bool?; true end
 end
 
 class FalseClass
   def to_i; 0 end
   def to_b; false end
+  def bool?; true end
 end
